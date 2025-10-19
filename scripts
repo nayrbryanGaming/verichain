@@ -1,1 +1,26 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
 
+contract Verichain {
+    struct Content {
+        string hash;        // Hash unik dari konten
+        string title;       // Judul / ringkasan konten
+        address author;     // Siapa yang upload
+        uint256 timestamp;  // Waktu verifikasi
+        bool verified;      // Status verifikasi
+    }
+
+    mapping(string => Content) public contents;
+    event ContentVerified(string hash, address indexed author, uint256 timestamp);
+
+    function verifyContent(string memory _hash, string memory _title) public {
+        require(contents[_hash].timestamp == 0, "Content already verified");
+        contents[_hash] = Content(_hash, _title, msg.sender, block.timestamp, true);
+        emit ContentVerified(_hash, msg.sender, block.timestamp);
+    }
+
+    function getContent(string memory _hash) public view returns (Content memory) {
+        require(contents[_hash].timestamp != 0, "Content not found");
+        return contents[_hash];
+    }
+}
