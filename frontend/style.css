@@ -1,0 +1,139 @@
+/* === VeriChain v0.1 Frontend Styles === */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+:root {
+  --bg-dark: #0b0f19;
+  --bg-card: #111827;
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --text-light: #e5e7eb;
+  --text-muted: #9ca3af;
+  --radius: 14px;
+  --transition: 0.25s ease-in-out;
+}
+
+* {
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: var(--bg-card);
+  padding: 2rem 1rem;
+  border-bottom: 1px solid #1f2937;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  font-size: 2.6rem;
+  margin: 0;
+  color: var(--accent);
+}
+
+header p {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+section {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  color: var(--accent);
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+button {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
+}
+
+button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.35);
+}
+
+input[type="file"] {
+  margin-top: 1rem;
+  background: #1f2937;
+  color: var(--text-muted);
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid #374151;
+  width: 100%;
+}
+
+#result {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+#verificationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#verificationList li {
+  background: #1e293b;
+  border-radius: var(--radius);
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  text-align: left;
+  word-break: break-all;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid #1f2937;
+  color: var(--text-muted);
+  background: var(--bg-card);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent-hover);
+}
