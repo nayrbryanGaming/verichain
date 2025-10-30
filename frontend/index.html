@@ -4,38 +4,371 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VeriChain - Blockchain Verification Portal</title>
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1x1rK6s9gqQ8K/6GQ5Y5n0h1rZ6NqJ8m6Q5oZg7+Fnr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="preload" href="style.css" as="style" />
+  <link rel="preload" href="app.js" as="script" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <!-- For modern browsers -->
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJESURBVFhH7ZY9aBRBFMf/u3vnxSQmMQkpFIMpRFELGxFBrEQQG0Gw00YQwaawsBTB0kptRKwUsRQrG0FQYiEpTKOCkYgfGBMTo7m73ds3s7fs3l42e5vLBQsD+YVh572ZN+///jc7swv8L4AI+25xc+P9GaK6J6GqR0GkCigZIlVYWkfUm4I1/wEQC4Uj57YUYYTAGn0K8+s9KLMt4aR/qK0d6hkC1XtgvbvOx/yRi0B4f4JYS6ASQA4Q5T0ovaehHL4B0H8vSHLIXB0UwCEqO6Ad6gNYwodSKLQPQ2ntDSeykQtAJcfSCHKzklehkAuAmP2vRl4AkvwBZ+oVFGs5nPWRD8BeBO3dBZnXLwPgywuBfQTizPyoFyD27QmCARRnBmBYiSVJQQFARRthKxR7HhQxnc8FbXQI3VZcm+63PCj+KiRYudJBC4LW0ncXAEClEJyOktaIVWp7UMsbXItz2g5pDYJKZAL4+zBn6MDEOqJPKUGfDlICUj70X7KcxKAQh3r8DiAPMDE4KncJzMwsEpVVWN7CPoSKG42MbTiIRZqnQYr1QGlqh0IjoIwQPNwJuVALU55Rkz9PbDEXIxxS3gvk9YLWUQ3FXgDECjgjlAVN74a2/xwI5JucCwSUGkIJnfCXhmFOPpdhklAL3VA7zoAQ3f+WLARCEFPPYf98Dk9K1HoRKNUQVaEJp8ohBMB0QDF+wVoahTP9GnT2CbTmY+Clz/cTuQgLDuDlYy2+gT3zBr4fcC4T/0r+AgGQclxKRwNyAAAAAElFTkSuQmCC" />
+  <!-- For iOS and Android -->
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJESURBVFhH7ZY9aBRBFMf/u3vnxSQmMQkpFIMpRFELGxFBrEQQG0GwsBQRwaawsBTB0kpLEbEUsRQrG0FQYiEpTKOCkYgfGBMTo7m73ds3s5fs3l42e5vLBQsD+YVh572ZN+///jc7swv8L4AI+25xc+P9GaK6J6GqR0GkCigZIlVYWkfUm4I1/wEQC4Uj57YUYYTAGn0K8+s9KLMt4aR/qK0d6hkC1XtgvbvOx/yRi0B4f4JYS6ASQA4Q5T0ovaehHL4B0H8vSHLIXB0UwCEqO6Ad6gNYwodSKLQPQ2ntDSeykQtAJcfSCHKzklehkAuAmP2vRl4AkvwBZ+oVFGs5nPWRD8BeBO3dBZnXLwPgywuBfQTizPyoFyD27QmCARRnBmBYiSVJQQFARRthKxR7HhQxnc8FbXQI3VZcm+63PCj+KiRYudJBC4LW0ncXAEClEJyOktaIVWp7UMsbXItz2g5pDYJKZAL4+zBn6MDEOqJPKUGfDlICUj70X7KcxKAQh3r8DiAPMDE4KncJzMwsEpVVWN7CPoSKG42MbTiIRZqnQYr1QGlqh0IjoIwQPNwJuVALU55Rkz9PbDEXIxxS3gvk9YLWUQ3FXgDECjgjlAVN74a2/xwI5JucCwSUGkIJnfCXhmFOPpdhklAL3VA7zoAQ3f+WLARCEFPPYf98Dk9K1HoRKNUQVaEJp8ohBMB0QDF+wVoahTP9GnT2CbTmY+Clz/cTuQgLDuDlYy2+gT3zBr4fcC4T/0r+AgGQclxKRwNyAAAAAElFTkSuQmCC" />
 </head>
 <body>
   <header>
-    <h1>🔗 VeriChain</h1>
-    <p>Trust made transparent — Verify anything on-chain.</p>
+    <div class="container-fluid py-3">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <img src="logo.png" alt="VeriChain Logo" class="logo-img me-3" height="40">
+          <div>
+            <h1 class="h4 mb-0 text-white">VeriChain</h1>
+            <small class="text-light">Trust made transparent — Verify anything on-chain.</small>
+          </div>
+        </div>
+        <!-- Profile Section in Header -->
+        <div class="d-flex align-items-center">
+          <div class="me-3 text-end">
+            <div id="profileAddress" class="small">Not connected</div>
+            <div id="walletAddress" class="small text-white">No wallet</div>
+            <div id="networkStatus" class="text-muted small">Network: unknown</div>
+          </div>
+          <div class="d-flex gap-2 align-items-center">
+            <button class="btn btn-sm btn-warning text-dark" id="connectWallet">
+              <i class="bi bi-wallet2"></i> Connect
+            </button>
+            <button class="btn btn-sm btn-outline-light" id="copyAddressBtn" title="Copy wallet address">Copy</button>
+            <button class="btn btn-sm btn-danger" id="disconnectBtn" title="Logout / Disconnect">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
+  <main class="container-fluid vh-100 overflow-hidden">
+    <div class="row h-100">
+      <!-- Left Column: Verification Tools -->
+      <div class="col-12 col-lg-6 h-100 overflow-auto py-4 pe-lg-2">
+        <section id="verification" class="mb-4">
+          <h2 class="h5 mb-3">Verify Content</h2>
+          
+          <!-- URL Verification -->
+          <div class="card p-3 mb-3">
+            <label for="urlInput" class="form-label">Verify URL/Link</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+              <input type="url" class="form-control" id="urlInput" placeholder="https://" aria-label="URL to verify">
+              <button class="btn btn-primary" type="button" id="verifyUrlBtn">Verify URL</button>
+            </div>
+          </div>
 
-  <main>
-    <section id="connect">
-      <button id="connectWallet">🦊 Connect Wallet</button>
-      <p id="walletAddress">No wallet connected</p>
-    </section>
+          <!-- Manual Text Input -->
+          <div class="card p-3 mb-3">
+            <label for="rumorInput" class="form-label">Verify Text/Rumor</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-chat-text"></i></span>
+              <textarea class="form-control" id="rumorInput" rows="3" placeholder="Enter the text or rumor you want to verify..."></textarea>
+            </div>
+            <div class="mt-2">
+              <button class="btn btn-primary" type="button" id="verifyTextBtn">Verify Text</button>
+            </div>
+          </div>
 
-    <section id="upload">
-      <h2>📄 Verify Document / Data</h2>
-      <input type="file" id="fileInput" />
-      <button id="verifyBtn">Verify On-Chain</button>
-      <p id="result"></p>
-    </section>
+          <!-- File Verification -->
+          <div class="card p-3">
+            <label for="fileInput" class="form-label">Verify Document/Image</label>
+            <div id="dropZone" class="drop-zone mb-3">
+              <div>
+                <i class="bi bi-file-earmark-text"></i>
+                <p class="mb-0">Drop files here or click to upload</p>
+                <input class="form-control visually-hidden" type="file" id="fileInput" accept="image/*,application/pdf" aria-label="Choose file to verify" />
+              </div>
+            </div>
+            <!-- Metadata fields required by verification flow -->
+            <div class="row g-2 mb-2">
+              <div class="col-12 col-md-6">
+                <label for="contentSource" class="form-label small">Source</label>
+                <input id="contentSource" class="form-control form-control-sm" placeholder="Source (e.g. Twitter, Website, News)" />
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="contentAuthor" class="form-label small">Author</label>
+                <input id="contentAuthor" class="form-control form-control-sm" placeholder="Author / handle" />
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="contentDate" class="form-label small">Publication Date</label>
+                <input id="contentDate" type="date" class="form-control form-control-sm" />
+              </div>
+            </div>
+            <div class="d-flex gap-2">
+              <button id="verifyBtn" class="btn btn-primary flex-grow-1" disabled>
+                <i class="bi bi-shield-check"></i> Verify
+              </button>
+              <button id="demoBtn" class="btn btn-outline-secondary" title="Create a demo verification">
+                <i class="bi bi-play-circle"></i> Demo
+              </button>
+            </div>
 
-    <section id="records">
-      <h2>🧾 Recent Verifications</h2>
-      <ul id="verificationList"></ul>
-    </section>
+            <!-- Progress bar and loading spinner (used by app.new.js) -->
+            <div class="mt-3">
+              <div class="progress-bar" style="height:6px; background:rgba(255,255,255,0.03); border-radius:6px; overflow:hidden;">
+                <div class="fill" style="width:0%; height:100%; background:linear-gradient(90deg,var(--primary),var(--accent));"></div>
+              </div>
+              <div class="mt-2 d-flex align-items-center gap-2">
+                <span class="loading-spinner" style="display:none; width:18px; height:18px; border:2px solid var(--primary); border-top-color:transparent; border-radius:50%; animation:spin 0.8s linear infinite;"></span>
+                <div id="result" class="small text-muted">Status: idle</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Actions (sticky on desktop) -->
+        <div class="sticky-top" style="top: 20px;">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h6 class="card-title">Quick Actions</h6>
+              <p class="text-muted small mb-2">Fast access to common verification flows</p>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-sm btn-primary" id="quickVerifyUrl"><i class="bi bi-link-45deg"></i> Verify URL</button>
+                <button class="btn btn-sm btn-primary" id="quickVerifyText"><i class="bi bi-chat-text"></i> Verify Text</button>
+                <button class="btn btn-sm btn-primary" id="quickVerifyFile"><i class="bi bi-file-earmark"></i> Verify File</button>
+                <button class="btn btn-sm btn-outline-secondary" id="quickDemo">Demo Entry</button>
+              </div>
+              <hr />
+              <div>
+                <label class="form-label small mb-1">Quick Search Fact/Hoax DB</label>
+                <div class="input-group input-group-sm">
+                  <input id="quickDbSearch" type="text" class="form-control" placeholder="Search verified claims...">
+                  <button class="btn btn-outline-primary" id="quickDbBtn">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verification Result -->
+        <section id="verificationResult" class="mb-4" style="display: none;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title d-flex align-items-center">
+                <i class="bi bi-info-circle me-2"></i>
+                Verification Result
+              </h5>
+              <div class="verification-status alert mb-3">
+                <!-- Will be filled dynamically: alert-success for FACT, alert-danger for HOAX -->
+              </div>
+              <div class="mb-3">
+                <h6>Original Source:</h6>
+                <div id="originalSource" class="source-details"></div>
+              </div>
+              <div class="mb-3">
+                <h6>Reality Check:</h6>
+                <div id="realityCheck" class="fact-check"></div>
+              </div>
+              <div class="mb-3">
+                <h6>References:</h6>
+                <div id="references" class="reference-links"></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <i class="bi bi-clock"></i> Verified: <span id="verificationTime"></span>
+              </small>
+            </div>
+          </div>
+        </section>
+
+        <section id="stats" class="mb-4">
+          <h2 class="h5">Verification Dashboard</h2>
+          <div class="row g-4">
+            <div class="col-12 col-md-4">
+              <div class="stat-card">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Total Verifications</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="stat-card">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Unique Sources</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="stat-card">
+                <div class="stat-value">0%</div>
+                <div class="stat-label">Trust Score</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="records">
+          <h2 class="h5">🧾 Recent Verifications</h2>
+          <div id="verificationList" class="verification-list"></div>
+        </section>
+      </div>
+
+      <!-- Right Column: Results/Facts (top) and News (bottom) -->
+      <div class="col-12 col-lg-6 h-100 overflow-auto py-4 ps-lg-2 border-start">
+        <!-- Verification Result (moved from left) -->
+        <section id="verificationResult" class="mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title d-flex align-items-center">
+                <i class="bi bi-info-circle me-2"></i>
+                Verification Result
+              </h5>
+              <div id="verificationStatusArea" class="verification-status alert mb-3" style="display:none;"></div>
+              <div class="mb-3">
+                <h6>Original Source:</h6>
+                <div id="originalSource" class="source-details"></div>
+              </div>
+              <div class="mb-3">
+                <h6>Reality Check:</h6>
+                <div id="realityCheck" class="fact-check"></div>
+              </div>
+              <div class="mb-3">
+                <h6>References:</h6>
+                <div id="references" class="reference-links"></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <i class="bi bi-clock"></i> Verified: <span id="verificationTime"></span>
+              </small>
+            </div>
+          </div>
+        </section>
+        <!-- News Feed Section -->
+        <section id="newsFeedSection" class="mb-4">
+          <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+              <h2 class="h5 mb-0">Latest News Feed</h2>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-light active" data-category="all">All</button>
+                <button class="btn btn-outline-light" data-category="trending">Trending</button>
+                <button class="btn btn-outline-light" data-category="verified">Verified</button>
+              </div>
+            </div>
+            <div class="card-body pb-2 pt-3">
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <div class="card p-2">
+                    <small class="text-muted">Fact / Hoax Database</small>
+                    <div class="d-flex gap-2 mt-2">
+                      <input id="dbSearchInput" class="form-control form-control-sm" placeholder="Search claims, titles, sources..." />
+                      <button class="btn btn-sm btn-primary" id="dbSearchBtn">Search</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="card p-2">
+                    <small class="text-muted">Top Sources</small>
+                    <div class="mt-2 d-flex flex-wrap gap-1">
+                      <span class="badge bg-light text-dark small">Kominfo</span>
+                      <span class="badge bg-light text-dark small">AFP</span>
+                      <span class="badge bg-light text-dark small">Reuters</span>
+                      <span class="badge bg-light text-dark small">Komdigi</span>
+                      <span class="badge bg-light text-dark small">FactCheck</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div id="newsFeed" class="list-group list-group-flush"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right column extra widgets -->
+        <div class="row g-3 mt-3">
+          <div class="col-12">
+            <div class="card p-3">
+              <small class="text-muted">Trending Tags</small>
+              <div class="mt-2">
+                <button class="btn btn-sm btn-outline-primary me-1 mb-1">#misinformation</button>
+                <button class="btn btn-sm btn-outline-primary me-1 mb-1">#covid</button>
+                <button class="btn btn-sm btn-outline-primary me-1 mb-1">#crypto</button>
+                <button class="btn btn-sm btn-outline-primary me-1 mb-1">#hoax</button>
+                <button class="btn btn-sm btn-outline-primary me-1 mb-1">#debunk</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card p-3">
+              <small class="text-muted">Activity (placeholder)</small>
+              <div class="placeholder-chart mt-3" style="height:120px; border-radius:8px; background: linear-gradient(90deg, rgba(0,163,255,0.08), rgba(0,163,255,0.03)); display:flex; align-items:center; justify-content:center; color:var(--primary);">Activity chart coming soon</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verified Reports Section -->
+        <section id="verifiedReportsSection">
+          <div class="card">
+            <div class="card-header bg-light">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h2 class="h5 mb-1">Verified Reports</h2>
+                  <p class="text-muted mb-0"><small>Official fact checks from trusted sources</small></p>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-sm btn-outline-primary active" data-filter="all">
+                    <i class="bi bi-collection"></i> All
+                  </button>
+                  <button class="btn btn-sm btn-outline-success" data-filter="fact">
+                    <i class="bi bi-check-circle"></i> Facts
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger" data-filter="hoax">
+                    <i class="bi bi-x-circle"></i> Hoaxes
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-2">
+              <div id="verifiedReports" class="reports-container"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <p>Built with ❤ by VeriChain Team | Powered by Blockchain</p>
+    <p>Built by VeriChain Team | Powered by Blockchain Technology</p>
   </footer>
 
+  <div class="text-center mt-2 mb-4">
+    <a href="#" id="threeDotMenu" class="text-muted small">⋯ Admin</a>
+  </div>
+
+  <!-- News feed data and rendering -->
+  <script src="news-feed.js"></script>
+  <!-- Local demo helper (works offline) -->
+  <script src="demo-mode.js"></script>
+  <!-- Local verified report samples (Kominfo/Komdigi) -->
+  <script src="trusted-reports.js"></script>
+  <!-- UI wiring for quick actions and report -> result mapping -->
+  <script src="ui-wiring.js"></script>
+  <!-- Profile helper (wallet/network UI) -->
+  <script src="profile.js"></script>
+  <!-- Use enhanced frontend when available -->
+  <!-- Web3 libraries required for wallet/connect and on-chain verify -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
-  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.12/dist/index.min.js"></script>
+  <script src="app.new.js"></script>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qQ2+6d5V6Q5+e6iQ0f2G8e9n8V1p3l8e5Z6n1q7g4x8f9c0b1d2e3f4g5h6i7j8k" crossorigin="anonymous"></script>
+
+  <!-- Chain selector modal -->
+  <div id="networkModal">
+    <div class="network-modal-content">
+      <h3>Select Network</h3>
+      <div id="networkList"></div>
+      <button onclick="document.getElementById('networkModal').style.display='none'" class="btn btn-secondary">Close</button>
+    </div>
+  </div>
 </body>
 </html>

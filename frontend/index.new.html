@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeriChain - Anti-Hoax Blockchain Verification Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJESURBVFhH7ZY9aBRBFMf/u3vnxSQmMQkpFIMpRFELGxFBrEQQG0GwsBQRwaawsBTB0kpLEbEUsRQrG0FQYiEpTKOCkYgfGBMTo7m73ds3s5fs3l42e5vLBQsD+YVh572ZN+///jc7swv8L4AI+25xc+P9GaK6J6GqR0GkCigZIlVYWkfUm4I1/wEQC4Uj57YUYYTAGn0K8+s9KLMt4aR/qK0d6hkC1XtgvbvOx/yRi0B4f4JYS6ASQA4Q5T0ovaehHL4B0H8vSHLIXB0UwCEqO6Ad6gNYwodSKLQPQ2ntDSeykQtAJcfSCHKzklehkAuAmP2vRl4AkvwBZ+oVFGs5nPWRD8BeBO3dBZnXLwPgywuBfQTizPyoFyD27QmCARRnBmBYiSVJQQFARRthKxR7HhQxnc8FbXQI3VZcm+63PCj+KiRYudJBC4LW0ncXAEClEJyOktaIVWp7UMsbXItz2g5pDYJKZAL4+zBn6MDEOqJPKUGfDlICUj70X7KcxKAQh3r8DiAPMDE4KncJzMwsEpVVWN7CPoSKG42MbTiIRZqnQYr1QGlqh0IjoIwQPNwJuVALU55Rkz9PbDEXIxxS3gvk9YLWUQ3FXgDECjgjlAVN74a2/xwI5JucCwSUGkIJnfCXhmFOPpdhklAL3VA7zoAQ3f+WLARCEFPPYf98Dk9K1HoRKNUQVaEJp8ohBMB0QDF+wVoahTP9GnT2CbTmY+Clz/cTuQgLDuDlYy2+gT3zBr4fcC4T/0r+AgGQclxKRwNyAAAAAElFTkSuQmCC" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJESURBVFhH7ZY9aBRBFMf/u3vnxSQmMQkpFIMpRFELGxFBrEQQG0GwsBQRwaawsBTB0kpLEbEUsRQrG0FQYiEpTKOCkYgfGBMTo7m73ds3s5fs3l42e5vLBQsD+YVh572ZN+///jc7swv8L4AI+25xc+P9GaK6J6GqR0GkCigZIlVYWkfUm4I1/wEQC4Uj57YUYYTAGn0K8+s9KLMt4aR/qK0d6hkC1XtgvbvOx/yRi0B4f4JYS6ASQA4Q5T0ovaehHL4B0H8vSHLIXB0UwCEqO6Ad6gNYwodSKLQPQ2ntDSeykQtAJcfSCHKzklehkAuAmP2vRl4AkvwBZ+oVFGs5nPWRD8BeBO3dBZnXLwPgywuBfQTizPyoFyD27QmCARRnBmBYiSVJQQFARRthKxR7HhQxnc8FbXQI3VZcm+63PCj+KiRYudJBC4LW0ncXAEClEJyOktaIVWp7UMsbXItz2g5pDYJKZAL4+zBn6MDEOqJPKUGfDlICUj70X7KcxKAQh3r8DiAPMDE4KncJzMwsEpVVWN7CPoSKG42MbTiIRZqnQYr1QGlqh0IjoIwQPNwJuVALU55Rkz9PbDEXIxxS3gvk9YLWUQ3FXgDECjgjlAVN74a2/xwI5JucCwSUGkIJnfCXhmFOPpdhklAL3VA7zoAQ3f+WLARCEFPPYf98Dk9K1HoRKNUQVaEJp8ohBMB0QDF+wVoahTP9GnT2CbTmY+Clz/cTuQgLDuDlYy2+gT3zBr4fcC4T/0r+AgGQclxKRwNyAAAAAElFTkSuQmCC" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">
+        <span>🔗</span>
+        <span>VeriChain</span>
+      </a>
+      <nav>
+        <button id="connectWallet" class="secondary">Connect Wallet</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="card" id="walletStatus">
+        <p id="walletAddress" class="tooltip" data-tooltip="Click to copy">No wallet connected</p>
+      </div>
+
+      <section class="card" id="upload">
+        <h2>📄 Verify Content</h2>
+        <p>Verify any document, image, or content to fight against misinformation.</p>
+        
+        <div class="file-input-container">
+          <input type="file" id="fileInput" accept="image/*,application/pdf,text/plain" />
+        </div>
+
+        <div class="source-info">
+          <div class="source-card">
+            <h4>Content Source</h4>
+            <input type="text" id="contentSource" placeholder="URL or source name" />
+          </div>
+          <div class="source-card">
+            <h4>Author/Publisher</h4>
+            <input type="text" id="contentAuthor" placeholder="Content creator or publisher" />
+          </div>
+          <div class="source-card">
+            <h4>Publication Date</h4>
+            <input type="date" id="contentDate" />
+          </div>
+        </div>
+
+        <div class="progress-bar">
+          <div class="fill" style="width: 0%"></div>
+        </div>
+
+        <button id="verifyBtn" disabled>
+          <span class="loading-spinner" style="display: none;"></span>
+          <span>Verify On-Chain</span>
+        </button>
+        
+        <p id="result"></p>
+      </section>
+
+      <section class="card" id="records">
+        <h2>🧾 Verification Records</h2>
+        <p>Recent content verifications and their authenticity timeline.</p>
+        
+        <div class="timeline" id="verificationList">
+          <!-- Verification records will be inserted here -->
+        </div>
+      </section>
+
+      <section class="card" id="analytics">
+        <h2>📊 Trust Analytics</h2>
+        <div class="dashboard-grid">
+          <div class="stat-card">
+            <h3>Verified Documents</h3>
+            <div class="stat-value">0</div>
+            <div class="stat-label">Total verifications</div>
+          </div>
+          <div class="stat-card">
+            <h3>Sources Tracked</h3>
+            <div class="stat-value">0</div>
+            <div class="stat-label">Unique sources</div>
+          </div>
+          <div class="stat-card">
+            <h3>Trust Score</h3>
+            <div class="stat-value">N/A</div>
+            <div class="stat-label">Platform reliability</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Built with ❤️ by VeriChain Team | <a href="#" id="aboutLink">About</a> | <a href="#" id="privacyLink">Privacy</a></p>
+  </footer>
+
+  <!-- Network Modal -->
+  <div id="networkModal" style="display:none;">
+    <div class="modal-content card">
+      <h3>Select Network</h3>
+      <div id="networkList"></div>
+      <button class="secondary" onclick="document.getElementById('networkModal').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.12/dist/index.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
